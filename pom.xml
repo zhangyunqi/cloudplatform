@@ -21,6 +21,7 @@
     <modules>
         <module>apps</module>
         <module>discover</module>
+        <module>sso</module>
     </modules>
 
     <dependencies>
@@ -41,6 +42,12 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- 注册客户端 -->
+        <dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
