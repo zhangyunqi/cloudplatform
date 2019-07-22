@@ -43,7 +43,7 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- 注册客户端 -->
+        <!-- 注册客户端  注册到注册中心-->
         <dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
