@@ -1,4 +1,4 @@
-package com.zyq.cloudplatform.eurake;
+package com.zyq.cloudplatform.eurake.discover;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

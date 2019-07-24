@@ -1,4 +1,4 @@
-package com.zyq.cloudplatform.eurake;
+package com.zyq.cloudplatform.eurake.discover;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
