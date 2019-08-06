@@ -17,6 +17,7 @@
 
     <modules>
         <module>eurake</module>
+        <module>nacos</module>
     </modules>
 
 </project>
