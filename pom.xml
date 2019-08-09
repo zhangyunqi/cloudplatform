@@ -22,6 +22,7 @@
         <module>apps</module>
         <module>discover</module>
         <module>sso</module>
+        <module>gateway</module>
     </modules>
 
     <dependencies>
