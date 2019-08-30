@@ -58,7 +58,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     @Bean
     public TokenStore tokenStore() {
-        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory)
+        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
         return tokenStore;
     }
 
