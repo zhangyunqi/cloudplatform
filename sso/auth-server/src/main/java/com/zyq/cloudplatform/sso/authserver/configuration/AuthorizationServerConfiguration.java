@@ -22,6 +22,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 
     /**
      * 用来配置令牌端点(Token Endpoint)的安全约束
+     *
      * @param security
      * @throws Exception
      */
@@ -43,17 +44,24 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        super.configure(clients);
+        // 配置客户端
+        clients.inMemory()
+                .withClient("web")
+                .secret("123456")
+                .scopes("service")
+                .authorizedGrantTypes("")
+                .accessTokenValiditySeconds(300);
     }
 
     /**
      * 用来配置授权（authorization）以及令牌（token）的访问端点和令牌服务(token services)。
+     *
      * @param endpoints
      * @throws Exception
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        super.configure(endpoints);
+        endpoints.tokenStore(redisTokenStore());
     }
 
     @Bean
