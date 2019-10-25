@@ -49,7 +49,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .withClient("web")
                 .secret("123456")
                 .scopes("service")
-                .authorizedGrantTypes("")
+                .authorizedGrantTypes("authorization_code","implicit","password","client_credentials")
                 .accessTokenValiditySeconds(300);
     }
 
