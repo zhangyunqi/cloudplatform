@@ -61,7 +61,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // 关闭csrf（跨站伪请求）
         http.csrf().disable();
-        http.
         http.authorizeRequests().anyRequest().fullyAuthenticated();
     }
 

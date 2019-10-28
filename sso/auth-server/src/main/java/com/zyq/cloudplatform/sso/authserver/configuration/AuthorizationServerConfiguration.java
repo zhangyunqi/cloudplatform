@@ -49,7 +49,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .withClient("web")
                 .secret("123456")
                 .scopes("service")
-                .authorizedGrantTypes("authorization_code","implicit","password","client_credentials")
+                .authorizedGrantTypes("authorization_code","implicit","password","client_credentials","refresh_token")
                 .accessTokenValiditySeconds(300);
     }
 
@@ -61,13 +61,13 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(redisTokenStore());
+        //endpoints.tokenStore(redisTokenStore());
     }
 
-    @Bean
-    public TokenStore tokenStore() {
-        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
-        return tokenStore;
-    }
+//    @Bean
+//    public TokenStore tokenStore() {
+//        RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+//        return tokenStore;
+//    }
 
 }
