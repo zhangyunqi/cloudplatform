@@ -28,7 +28,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
                 .password("{bcrypt}$2a$10$Pm5hJanxUE9BLGOjPtC0GOUwy7aYPJqtLZ1kt0cJE1oSjTmJgSUN.")
                 .roles("ADMIN")
                 .build();
-
         return user;
     }
 
