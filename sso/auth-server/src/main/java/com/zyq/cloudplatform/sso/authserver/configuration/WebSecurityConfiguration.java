@@ -1,5 +1,7 @@
 package com.zyq.cloudplatform.sso.authserver.configuration;
 
+import java.net.PasswordAuthentication;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * web安全配置
@@ -23,6 +26,17 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Qualifier("userDetailServiceImpl")
     private UserDetailsService userDetailsService;
+
+    /**
+     * 密码加密方式
+     * spring5，springboot2.0以后必须配置
+     *
+     * @return
+     */
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 
     /**
@@ -44,16 +58,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * spring 5以后，密码必须加密
-     *
-     * @return
-     */
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    /**
      * 配置所有请求的安全验证
      *
      * @param http
@@ -65,8 +69,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().anyRequest().fullyAuthenticated();
     }
-
-
 
 
 }

@@ -1,7 +1,11 @@
 package com.zyq.cloudplatform.sso.authserver.configuration;
 
+import jdk.nashorn.internal.parser.Token;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -10,6 +14,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
+import javax.annotation.Resource;
 
 /**
  * 认证服务器配置
@@ -20,6 +26,17 @@ import org.springframework.security.oauth2.provider.token.store.redis.RedisToken
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+    /**
+     * 注入authenticationManager（密码模式必须的）
+     */
+    @Autowired
+    AuthenticationManager authenticationManager;
+
+    /**
+     * 注入用户信息服务
+     */
+    @Resource(name = "userDetailServiceImpl")
+    UserDetailsService userDetailsService;
 
     /**
      * 用来配置令牌端点(Token Endpoint)的安全约束
@@ -34,6 +51,14 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .allowFormAuthenticationForClients()
                 //验证token的策略
                 .checkTokenAccess("authenticated()");
+    }
+
+    /**
+     * 定义tokenStore
+     * @return
+     */
+    public TokenStore tokenStore(){
+        return new InMemoryTokenStore();
     }
 
     /**
@@ -62,18 +87,10 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(new InMemoryTokenStore());
+        endpoints.tokenStore(tokenStore());
+        endpoints.authenticationManager(authenticationManager);
+        endpoints.userDetailsService(userDetailsService);
 
-    }
-
-    /**
-     * 定义tokenStore
-     * @return
-     */
-    @Bean
-    public TokenStore tokenStore() {
-        Inmemoryt
-        return tokenStore;
     }
 
 }
