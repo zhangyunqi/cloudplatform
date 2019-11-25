@@ -1,8 +1,8 @@
 server:
-  port: 8080
+  port: 6001
 spring:
   application:
-    name: demo-app1
+    name: cloud-gateway
 eureka:
   instance:
     prefer-ip-address: true
@@ -11,4 +11,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka/
-

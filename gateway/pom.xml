@@ -15,4 +15,9 @@
     <packaging>pom</packaging>
     <description>网关</description>
 
+
+    <modules>
+        <module>cloud-gateway</module>
+    </modules>
+
 </project>

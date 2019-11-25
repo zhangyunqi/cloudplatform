@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: app1
+        uri: http://127.0.0.1:8080/
+        predicates:
+        - Path=/app1/**
+        filters:
+        - StripPrefix=1
