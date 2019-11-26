@@ -1,6 +1,9 @@
 spring:
   cloud:
     gateway:
+      loadbalancer:
+        #gateway找不到服务默认返回503，设置true后，可以返回404
+        use404: true
       routes:
       - id: app1
         uri: http://127.0.0.1:8080/
@@ -8,3 +11,10 @@ spring:
         - Path=/app1/**
         filters:
         - StripPrefix=1
+ribbon:
+  #使用okhttp代替httpclient,提高性能
+  okhttp:
+    enabled: true
+  http:
+    client:
+      enabled: false

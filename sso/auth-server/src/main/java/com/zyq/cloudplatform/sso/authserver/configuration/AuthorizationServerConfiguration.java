@@ -23,7 +23,7 @@ import java.util.Arrays;
 
 /**
  * 认证服务器配置
- *
+ * //提供/oauth/authorize,/oauth/token,/oauth/check_token,/oauth/confirm_access,/oauth/error
  * @author zhangyunqi
  * @date 2019/08/09
  */
@@ -71,8 +71,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         security
                 // 允许表单认证
                 .allowFormAuthenticationForClients()
-                //验证token的策略
-                .checkTokenAccess("authenticated()");
+                //验证token的策略isAuthenticated()/permitAll()
+                .checkTokenAccess("permitAll()");
     }
 
     /**
