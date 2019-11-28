@@ -71,7 +71,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         security
                 // 允许表单认证
                 .allowFormAuthenticationForClients()
-                //验证token的策略isAuthenticated()/permitAll()
+                //验证token的权限策略isAuthenticated()//permitAll()
+                .tokenKeyAccess("permitAll()")
                 .checkTokenAccess("permitAll()");
     }
 
@@ -97,7 +98,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
         clients.inMemory()
                 .withClient("web")
                 .secret(new BCryptPasswordEncoder().encode("123"))
-                .scopes("service")
+                .scopes("all")
                 .authorizedGrantTypes("authorization_code", "implicit", "password", "client_credentials", "refresh_token")
                 .accessTokenValiditySeconds(300);
     }
