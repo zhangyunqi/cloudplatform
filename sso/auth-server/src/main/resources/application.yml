@@ -1,2 +1,5 @@
-signing:
-  key: ddd
+uaa:
+  key-store:
+    name: config/mykeystore.jks
+    password: Cars123
+    alias: cars
