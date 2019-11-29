@@ -8,19 +8,18 @@ import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JWTTokenEnhancer implements TokenEnhancer {
-   /* @Autowired
-    private OrgUserRepository orgUserRepo;
-
-    private String getOrgId(String userName) {
-        UserOrganization orgUser = orgUserRepo.findByUserName(userName);
-        return orgUser.getOrganizationId();
-    }*/
+/**
+ * JwtToken增强器
+ * 加入自定义字段
+ *
+ * @author zhangyunqi
+ * @date 2019/11/29
+ */
+public class JwtTokenEnhancer implements TokenEnhancer {
 
     @Override
     public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-        Map<String, Object> additionalInfo = new HashMap<>();
-        //String orgId =  getOrgId(authentication.getName());
+        Map<String, Object> additionalInfo = new HashMap<>(1);
         String orgId = "1111";
         additionalInfo.put("organizationId", orgId);
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);

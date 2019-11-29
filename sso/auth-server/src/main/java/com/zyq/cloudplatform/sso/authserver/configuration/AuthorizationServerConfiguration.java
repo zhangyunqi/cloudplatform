@@ -77,15 +77,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     }
 
     /**
-     * 定义tokenStore
-     *
-     * @return
-     */
-    /*public TokenStore tokenStore() {
-        return new InMemoryTokenStore();
-    }*/
-
-    /**
      * 配置客户端详情服务（客户端模式）
      * 客户端详情信息在这里进行初始化
      *

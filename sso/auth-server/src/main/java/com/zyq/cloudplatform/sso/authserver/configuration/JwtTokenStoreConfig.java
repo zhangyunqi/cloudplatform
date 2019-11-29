@@ -22,7 +22,7 @@ import java.security.KeyPair;
  * @date 2019/11/29
  */
 @Configuration
-public class JWTTokenStoreConfig {
+public class JwtTokenStoreConfig {
 
     @Autowired
     private UaaProperties uaaProperties;
@@ -80,6 +80,6 @@ public class JWTTokenStoreConfig {
      */
     @Bean
     public TokenEnhancer jwtTokenEnhancer() {
-        return new JWTTokenEnhancer();
+        return new JwtTokenEnhancer();
     }
 }
