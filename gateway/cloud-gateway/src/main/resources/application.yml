@@ -5,12 +5,12 @@ spring:
         #gateway找不到服务默认返回503，设置true后，可以返回404
         use404: true
       routes:
-      - id: app1
-        uri: http://127.0.0.1:8080/
-        predicates:
-        - Path=/app1/**
-        filters:
-        - StripPrefix=1
+        - id: app1
+          uri: lb://demo-app1
+          predicates:
+            - Path=/app1/**
+          filters:
+            - StripPrefix=1
 ribbon:
   #使用okhttp代替httpclient,提高性能
   okhttp:
@@ -18,3 +18,14 @@ ribbon:
   http:
     client:
       enabled: false
+
+security:
+  oauth2:
+    client:
+      client-id: web
+      client-secret: 123
+      user-authorization-uri: http://127.0.0.1:6666/oauth/authorize
+      access-token-uri: http://127.0.0.1:6666/oauth/token
+    resource:
+      jwt:
+        key-uri: http://127.0.0.1:6666/oauth/token_key

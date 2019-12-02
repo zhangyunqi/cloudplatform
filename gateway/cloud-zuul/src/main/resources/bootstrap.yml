@@ -1,0 +1,13 @@
+server:
+  port: 6002
+spring:
+  application:
+    name: cloud-zuul
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  #hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/

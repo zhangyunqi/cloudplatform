@@ -18,6 +18,7 @@
 
     <modules>
         <module>cloud-gateway</module>
+        <module>cloud-zuul</module>
     </modules>
 
 </project>
