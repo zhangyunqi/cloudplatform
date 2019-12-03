@@ -1,31 +1,21 @@
-package com.zyq.cloudplatform.sso.authserver;
+package com.zyq.cloudplatform.apps.app3.controller;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 应用入口
- *
- * @author zhangyunqi
- * @date 2019/11/29
- */
-@SpringBootApplication
 @RestController
-@EnableResourceServer
-@EnableAuthorizationServer
-public class AuthServerApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(AuthServerApplication.class, args);
+public class TestController {
+    @GetMapping(value = "/hello")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String sayHello(){
+        return "hello";
     }
 
     @RequestMapping(value = { "/user" }, produces = "application/json")
@@ -38,7 +28,5 @@ public class AuthServerApplication {
         userInfo.put("authorities", AuthorityUtils.authorityListToSet(user.getUserAuthentication().getAuthorities()));
 
         return userInfo;
-
     }
-
 }

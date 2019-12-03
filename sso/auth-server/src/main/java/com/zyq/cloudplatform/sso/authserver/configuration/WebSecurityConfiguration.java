@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Resource(name="userDetailServiceImpl")
+    @Resource(name = "userDetailServiceImpl")
     private UserDetailsService userDetailsService;
 
     /**
@@ -69,8 +69,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         // 关闭csrf（跨站伪请求）
-        http.csrf().disable();
-        http.authorizeRequests().anyRequest().fullyAuthenticated();
+        http.csrf().disable()
+                .formLogin().permitAll()
+                .and()
+                .authorizeRequests().anyRequest().authenticated();
     }
 
 

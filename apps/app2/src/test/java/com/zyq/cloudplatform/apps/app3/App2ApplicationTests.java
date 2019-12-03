@@ -1,4 +1,4 @@
-package com.zyq.cloudplatform.apps.app2;
+package com.zyq.cloudplatform.apps.app3;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

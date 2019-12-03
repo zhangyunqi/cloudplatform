@@ -18,6 +18,7 @@
     <modules>
         <module>app1</module>
         <module>app2</module>
+        <module>app3</module>
     </modules>
     <dependencies>
         <!-- nacos服务注册时用 开始 -->

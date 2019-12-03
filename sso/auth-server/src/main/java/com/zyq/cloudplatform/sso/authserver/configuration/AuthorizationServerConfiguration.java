@@ -28,7 +28,6 @@ import java.util.Arrays;
  * @date 2019/08/09
  */
 @Configuration
-@EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
     /**
      * 注入authenticationManager（密码模式必须的）
@@ -73,7 +72,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .allowFormAuthenticationForClients()
                 //验证token的权限策略isAuthenticated()//permitAll()
                 .tokenKeyAccess("permitAll()")
-                .checkTokenAccess("permitAll()");
+                .checkTokenAccess("isAuthenticated()");
     }
 
     /**
@@ -91,7 +90,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .secret(new BCryptPasswordEncoder().encode("123"))
                 .scopes("all")
                 .authorizedGrantTypes("authorization_code", "implicit", "password", "client_credentials", "refresh_token")
-                .accessTokenValiditySeconds(300);
+                .accessTokenValiditySeconds(3000);
     }
 
     /**

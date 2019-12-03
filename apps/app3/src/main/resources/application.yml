@@ -1,0 +1,21 @@
+security:
+  oauth2:
+    client:
+      client-id: web
+      client-secret: 123
+      scope: all
+      grant-type: password
+      access-token-uri: http://127.0.0.1:6666/oauth/token
+      user-authorization-uri: http://127.0.0.1:6666/oauth/authorize
+    resource:
+      jwt:
+        key-value: |
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnXIXJFbeFQ4lXMFdv8RutLuBro5QAEVbEmze98Yzw3JN1dRqJtGgYAwW+FEJID/a+AdzaLJpBZKr8FSvOxu/30VLtgzpZYIUtJx+rwccA9esEJUYR7XxXquKKAA9lkMXAwBE0SQftkfDSoei5X/nSpVjKKxaNqa02uqUcjB8+oEdyndlJFYhzVY9mwWocM/QPKDvjhbYOP+LALag8Y5k2Y30e/t+vOjYjyvmk+2d3WBKCaVYn8CL71ydkH1zLw9KCzizRcRHiaKgPxNyU6DfOPJPPtnQNRLYkZZN2fxcO7MDQWSEwF6TTqz04MZ57o/QczZxq3DfOrBPNRoeGmOOQwIDAQAB
+          -----END PUBLIC KEY-----
+
+uaa:
+  key-store:
+    name: config/mykeystore.jks
+    password: Cars123
+    alias: cars

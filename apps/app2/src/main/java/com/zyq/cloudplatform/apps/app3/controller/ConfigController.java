@@ -1,4 +1,4 @@
-package com.zyq.cloudplatform.apps.app2.controller;
+package com.zyq.cloudplatform.apps.app3.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
