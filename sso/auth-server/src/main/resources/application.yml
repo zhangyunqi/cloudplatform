@@ -1,5 +1,44 @@
+spring:
+  datasource:
+    ##数据库连接设置
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:dbtest
+    username: sa
+    password: sa
+    ##数据初始化设置
+    ##数据库结构的DDL初始化
+    #schema: classpath:h2db/schema.sql
+    ##数据库数据的DML初始化
+    #data: classpath:h2db/db.sql
+    ##连接池配置
+    druid:
+      initial-size: 1
+      max-active: 20
+      min-idle: 1
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 5
+      validation-query: select 1
+      validation-query-timeout: 30000
+      test-on-borrow: true
+      test-on-return: true
+      test-while-idle: true
+      time-between-eviction-runs-millis: 10000
+      min-evictable-idle-time-millis: 30000
+      async-close-connection-enable: true
+
+  h2:
+    console:
+      # 进行该配置true后，h2 web consloe就可以在远程访问了。否则只能在本机访问。
+      settings:
+        web-allow-others: false
+      path: /h2
+      enabled: true
+
+
 uaa:
   key-store:
     name: config/mykeystore.jks
     password: Cars123
     alias: cars
+

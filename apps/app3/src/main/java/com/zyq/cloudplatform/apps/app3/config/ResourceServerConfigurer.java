@@ -13,9 +13,10 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
-                .httpBasic().disable()
-                .formLogin().loginPage("/login.html")
-                .and()
-                .authorizeRequests().anyRequest().authenticated();
+                //.formLogin().loginPage("/login.html")
+                .authorizeRequests()
+                //.antMatchers("/login.html").permitAll()
+                .anyRequest().authenticated();
     }
+
 }

@@ -73,6 +73,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 //验证token的权限策略isAuthenticated()//permitAll()
                 .tokenKeyAccess("permitAll()")
                 .checkTokenAccess("isAuthenticated()");
+
     }
 
     /**
