@@ -1,8 +1,8 @@
 server:
-  port: 8080
+  port: 8084
 spring:
   application:
-    name: demo-app1
+    name: privilege-management
 eureka:
   instance:
     prefer-ip-address: true

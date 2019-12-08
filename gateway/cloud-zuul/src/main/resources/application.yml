@@ -1,0 +1,24 @@
+
+ribbon:
+  #使用okhttp代替httpclient,提高性能
+  okhttp:
+    enabled: true
+  http:
+    client:
+      enabled: false
+
+security:
+  oauth2:
+    client:
+      client-id: web
+      client-secret: 123
+      user-authorization-uri: http://127.0.0.1:6666/oauth/authorize
+      access-token-uri: http://127.0.0.1:6666/oauth/token
+      grant-type: password
+      scope: all
+    resource:
+      jwt:
+        key-uri: http://127.0.0.1:6666/oauth/token_key
+zuul:
+  routes:
+    demo-app1: /app1/**
