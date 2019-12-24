@@ -142,7 +142,7 @@ public class MybatisCodeGenerator {
         // 公共父类
         //strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
+        //strategy.setSuperEntityColumns("id");
         //需要生成的表,可以在这里直接定义
         strategy.setInclude(scanner("大写表名，多个英文逗号分割").split(","));
         // 生成controller时配置URL驼峰转连字符
